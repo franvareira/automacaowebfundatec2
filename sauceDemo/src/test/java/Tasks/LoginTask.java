@@ -1,5 +1,6 @@
 package Tasks;
 
+import Framework.Utils.FileOperations;
 import PageObjects.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -19,9 +20,9 @@ public class LoginTask {
 
     public void efetuarLogin() throws InterruptedException {
 
-        loginPage.getUserNameInput().sendKeys("standard_user");
+        loginPage.getUserNameInput().sendKeys(FileOperations.getProperties("user").getProperty("usuario"));
         Thread.sleep(5000);
-        loginPage.getPasswordInput().sendKeys("secret_sauce");
+        loginPage.getPasswordInput().sendKeys(FileOperations.getProperties("user").getProperty("password"));
         Thread.sleep(5000);
         loginPage.getLoginButton().click();
 

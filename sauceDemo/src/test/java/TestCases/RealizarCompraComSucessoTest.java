@@ -1,6 +1,7 @@
 package TestCases;
 
 import Framework.TestBase;
+import Framework.Utils.TakeScreenshot;
 import Tasks.CheckoutTask;
 import Tasks.FinishTask;
 import Tasks.LoginTask;
@@ -20,10 +21,18 @@ public class RealizarCompraComSucessoTest extends TestBase {
     @Test
     public void realizarCompra() throws InterruptedException {
 
-        loginTask.efetuarLogin();
-        produtoTask.selecionarProduto();
-        checkoutTask.preencherCheckout();
-        finishTask.finalizarCompra();
+        try{
+            loginTask.efetuarLogin();
+            produtoTask.selecionarProduto();
+            checkoutTask.preencherCheckout2();
+            finishTask.finalizarCompra();
+
+        }catch (Exception e){
+
+            TakeScreenshot.screenshotPage(driver,"ERRO");
+            throw e;
+
+        }
 
     }
 

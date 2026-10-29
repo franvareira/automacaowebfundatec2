@@ -1,5 +1,6 @@
 package Validacao;
 
+import Framework.Utils.TakeScreenshot;
 import PageObjects.FinishPage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -20,9 +21,10 @@ public class FinishValidacao {
         try {
 
             Assertions.assertEquals("Thank you for your order!",finishPage.getFinishTextLabel().getText());
-
+            TakeScreenshot.screenshotPage(driver,"Finish");
         } catch (Exception e) {
-            e.getMessage();
+            TakeScreenshot.screenshotPage(driver,"Finish");
+            throw e;
         }
 
 

@@ -1,5 +1,6 @@
 package Validacao;
 
+import Framework.Utils.TakeScreenshot;
 import PageObjects.GenericPage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -20,8 +21,10 @@ public class GenericValidacao {
         try {
            String label = genericPage.getTextTitle().getText();
             Assertions.assertEquals(texto,label);
+            //TakeScreenshot.screenshotPage(driver,texto);
         } catch (Exception e) {
-            e.getMessage();
+            //TakeScreenshot.screenshotPage(driver,texto);
+            throw e;
         }
 
     }
@@ -31,8 +34,10 @@ public class GenericValidacao {
         try {
             String labelProduto = genericPage.getTextProduto().getText();
             Assertions.assertEquals("Sauce Labs Onesie",labelProduto);
+            TakeScreenshot.screenshotPage(driver,"Selecionar Produto");
         } catch (Exception e) {
-            e.getMessage();
+            TakeScreenshot.screenshotPage(driver,"Selecionar Produto");
+            throw e;
         }
     }
 

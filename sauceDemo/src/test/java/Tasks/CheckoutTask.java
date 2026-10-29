@@ -1,6 +1,7 @@
 package Tasks;
 
 import Framework.Utils.FakersGeneration;
+import Framework.Utils.FileOperations;
 import PageObjects.CheckoutPage;
 import Validacao.CheckoutValidacao;
 import Validacao.GenericValidacao;
@@ -33,6 +34,31 @@ public class CheckoutTask {
         checkoutPage.getZipCodeInput().sendKeys(fakersGeneration.getZipCode());
         Thread.sleep(1000);
         checkoutValidacao.validaForm();
+        checkoutPage.getContinueButton().click();
+        genericValidacao.validationTitlePages("Checkout: Overview");
+        genericValidacao.validationProduto();
+
+
+    }
+
+    public void preencherCheckout2() throws InterruptedException {
+
+        String name = fakersGeneration.getFisrtName();
+        String lastName = fakersGeneration.getLastName();
+        String zipCode = fakersGeneration.getZipCode();
+
+        FileOperations.setProperties("form","primeiroNome",name);
+        FileOperations.setProperties("form","ultimoNome",lastName);
+        FileOperations.setProperties("form","cep",zipCode);
+
+        genericValidacao.validationTitlePages("Checkout: Your Information");
+        checkoutPage.getFirstNameInput().sendKeys(name);
+        Thread.sleep(1000);
+        checkoutPage.getLastNameInput().sendKeys(lastName);
+        Thread.sleep(1000);
+        checkoutPage.getZipCodeInput().sendKeys(zipCode);
+        Thread.sleep(1000);
+        checkoutValidacao.validaCamposForm();
         checkoutPage.getContinueButton().click();
         genericValidacao.validationTitlePages("Checkout: Overview");
         genericValidacao.validationProduto();

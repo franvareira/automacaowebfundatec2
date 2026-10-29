@@ -1,5 +1,6 @@
 package Validacao;
 
+import Framework.Utils.TakeScreenshot;
 import PageObjects.LoginPage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -21,9 +22,11 @@ public class LoginValidacao {
         try {
 
             Assertions.assertTrue(loginPage.getLoginButton().isDisplayed());
+            TakeScreenshot.screenshotPage(driver,"Login");
 
         } catch (Exception e) {
-            e.getMessage();
+            TakeScreenshot.screenshotPage(driver,"Login");
+            throw e;
         }
     }
 }

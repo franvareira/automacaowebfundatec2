@@ -1,5 +1,6 @@
 package Tasks;
 
+import Framework.Browser.Waits;
 import PageObjects.CartPage;
 import PageObjects.ProdutoPage;
 import Validacao.GenericValidacao;
@@ -11,6 +12,7 @@ public class ProdutoTask {
     private ProdutoPage produtoPage;
     private GenericValidacao genericValidacao;
     private CartPage cartPage;
+    private Waits waits;
 
     public ProdutoTask (WebDriver driver){
 
@@ -18,12 +20,14 @@ public class ProdutoTask {
         produtoPage = new ProdutoPage(this.driver);
         genericValidacao = new GenericValidacao(this.driver);
         cartPage = new CartPage(this.driver);
+        waits = new Waits(this.driver);
     }
 
     public void selecionarProduto(){
 
         produtoPage.getAddToCartButton().click();
         produtoPage.getCartButton().click();
+        waits.loadElement(cartPage.getCheckoutButton());
         genericValidacao.validationTitlePages("Your Cart");
         genericValidacao.validationProduto();
         cartPage.getCheckoutButton().click();
