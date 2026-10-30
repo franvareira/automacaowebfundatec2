@@ -6,9 +6,15 @@ import Tasks.CheckoutTask;
 import Tasks.FinishTask;
 import Tasks.LoginTask;
 import Tasks.ProdutoTask;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
+@Epic("Teste E-comerce")
+@Feature("Realizar Compra com Sucesso")
 public class RealizarCompraComSucessoTest extends TestBase {
 
     private final WebDriver driver = getDriverManager();
@@ -19,6 +25,8 @@ public class RealizarCompraComSucessoTest extends TestBase {
     FinishTask finishTask = new FinishTask(driver);
 
     @Test
+    @Story("Usuário faz login com credenciais válidas")
+    @Description("Testa uma compra com sucesso")
     public void realizarCompra() throws InterruptedException {
 
         try{
