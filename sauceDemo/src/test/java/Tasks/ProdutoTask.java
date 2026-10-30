@@ -25,6 +25,7 @@ public class ProdutoTask {
 
     public void selecionarProduto(){
 
+        waits.loadElement(produtoPage.getAddToCartButton());
         produtoPage.getAddToCartButton().click();
         produtoPage.getCartButton().click();
         waits.loadElement(cartPage.getCheckoutButton());

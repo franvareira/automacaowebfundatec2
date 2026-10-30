@@ -31,6 +31,7 @@ public class FinishTask {
 
     public void finalizarCompra(){
 
+        waits.loadElement(finishPage.getFinishTextLabel());
         genericValidacao.validationTitlePages("Checkout: Complete!");
         finishValidacao.validationSucessoCompra();
         finishPage.getMenuButton().click();

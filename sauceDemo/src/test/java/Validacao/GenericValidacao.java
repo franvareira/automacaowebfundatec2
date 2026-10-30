@@ -21,9 +21,9 @@ public class GenericValidacao {
         try {
            String label = genericPage.getTextTitle().getText();
             Assertions.assertEquals(texto,label);
-            //TakeScreenshot.screenshotPage(driver,texto);
+            TakeScreenshot.screenshotPage(driver,texto);
         } catch (Exception e) {
-            //TakeScreenshot.screenshotPage(driver,texto);
+            TakeScreenshot.screenshotPage(driver,texto);
             throw e;
         }
 

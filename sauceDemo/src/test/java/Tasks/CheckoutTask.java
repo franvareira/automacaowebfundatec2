@@ -3,6 +3,7 @@ package Tasks;
 import Framework.Utils.FakersGeneration;
 import Framework.Utils.FileOperations;
 import PageObjects.CheckoutPage;
+import PageObjects.FinishPage;
 import Validacao.CheckoutValidacao;
 import Validacao.GenericValidacao;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public class CheckoutTask {
     private GenericValidacao genericValidacao;
     private CheckoutValidacao checkoutValidacao;
     private FakersGeneration fakersGeneration;
+    private FinishPage finishPage;
 
     public CheckoutTask (WebDriver driver){
 
@@ -22,6 +24,7 @@ public class CheckoutTask {
         genericValidacao = new GenericValidacao(this.driver);
         checkoutValidacao = new CheckoutValidacao(this.driver);
         fakersGeneration = new FakersGeneration();
+        finishPage = new FinishPage(this.driver);
     }
 
     public void preencherCheckout() throws InterruptedException {
@@ -37,6 +40,7 @@ public class CheckoutTask {
         checkoutPage.getContinueButton().click();
         genericValidacao.validationTitlePages("Checkout: Overview");
         genericValidacao.validationProduto();
+        finishPage.getFinishButton().click();
 
 
     }
@@ -62,6 +66,8 @@ public class CheckoutTask {
         checkoutPage.getContinueButton().click();
         genericValidacao.validationTitlePages("Checkout: Overview");
         genericValidacao.validationProduto();
+        finishPage.getFinishButton().click();
+
 
 
     }
